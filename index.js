@@ -33,7 +33,7 @@ app.get("/signup",(req,res)=>{
 app.post("/login", async (req,res)=>{
   try {
     const { email, password } = req.body;
-    console.log({ email, password });
+    // console.log({ email, password });
     
     let user = await userModel.findOne({ email: email });
     
@@ -44,8 +44,8 @@ app.post("/login", async (req,res)=>{
     const isPasswordValid = await bcrypt.compare(password, user.password);
     
     if (isPasswordValid) {
-      console.log(isPasswordValid);
-      res.render('homepage');
+      //console.log(isPasswordValid);
+      res.redirect('/homepage');
     } else {
       res.send('Invalid credentials');
     }
@@ -56,6 +56,7 @@ app.post("/login", async (req,res)=>{
 })
 
 app.get('/homepage',(req,res)=>{
+  console.log(req)
   res.render("homepage")
 })
 
@@ -63,14 +64,14 @@ app.post("/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const encryptedPassword = await encryptPassword(password);
-    console.log(encryptedPassword)
+    // console.log(encryptedPassword)
     // console.log({name,email,password})
     let createdUser = await userModel.create({
       name: name,
       email: email,
       password: encryptedPassword,
     });
-    console.log(createdUser);
+    // console.log(createdUser);
     res.redirect('/homepage')
   } catch (err) {
     const errorMessage = err.errorResponse.errmsg;

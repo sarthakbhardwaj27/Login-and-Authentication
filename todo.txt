@@ -1,0 +1,4 @@
+1. Add delete user functionality
+2. Sign out the user
+3. Setup cookies
+4. Use JWT token
