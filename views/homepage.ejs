@@ -6,33 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Home Page</title>
-  <script defer>
-    async function deleteUser(userId) {
-      try {
-        const response = await fetch(`/delete-user/${userId}`, {
-          method: 'DELETE',
-        });
 
-        const result = await response.json();
-        if (response.ok) {
-          alert('User deleted successfully');
-        } else {
-          alert('Error: ' + result.error);
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while deleting the user');
-      }
-    }
-  </script>
 </head>
 
 <body>
   <div class="main w-full min-h-screen bg-zinc-900 text-white p-10">
-    <span class="text-2xl">Hi, < user > ! This is Home Page </span>
+    <span class="text-2xl">Hi, <%= user %> ! This is Home Page </span>
     <div>
-      <button class="p-4 bg-red-600 text-black rounded-lg mt-10" onclick="deleteUser('USER_ID_HERE')">Delete
-        Account</button>
+      <a href="/deleteuser">
+        <button class="p-4 bg-red-600 text-black rounded-lg mt-10"">Delete
+          Account</button>
+      </a>
     </div>
   </div>
 </body>

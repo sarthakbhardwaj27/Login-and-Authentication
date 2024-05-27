@@ -1,4 +1,4 @@
-1. Add delete user functionality
+1. Add delete user functionality -> done
 2. Sign out the user
-3. Setup cookies
+3. Setup cookies - done 
 4. Use JWT token
